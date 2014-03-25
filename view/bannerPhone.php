@@ -74,8 +74,8 @@ HTML;
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li <?php echo $data['activeHome'];?>  ><a href="/" >商品</a></li>
-              <li <?php echo $data['activeOrder'];?>  ><a href="/order" >东大门订单</a></li>
-              <li <?php echo $data['activeMyOrder'];?>  ><a href="/myorder" >订单</a></li>
+              <li <?php echo $data['activeNotice'];?>  ><a href="/notice" >购买须知</a></li>
+              <li <?php echo $data['activeDelivery'];?>  ><a href="/delivery" >运费计算</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
