@@ -8,6 +8,7 @@ class PostList extends control{
 		$this->page =isset($GLOBALS['URL_PATH'][1]) ? intval($GLOBALS['URL_PATH'][1]) : 0;
 		$this->cat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
 		$this->skey =isset($_GET['skey']) ? trim($_GET['skey']) : '';
+		$this->finder = isset($_GET['finder']) ? trim($_GET['finder']) : '';
 		return true;
 
 	}
@@ -38,6 +39,13 @@ class PostList extends control{
 
 		}
 
+		if($this->finder !='')
+		{
+			$s_time = strtotime($this->finder);
+			$e_time = $s_time+86400;
+			$where['createtime'] = array('$gte'=>$s_time,'$lt'=>$e_time);
+		}
+
 
 		$datas['post'] = $postModel->getPostList($this->page,$where);
 		$postNum = $postModel->getPostCount($where);
@@ -50,7 +58,7 @@ class PostList extends control{
 		{
 			$price = $data['price'];
 			$price = intval(1.08*1.25*$price) +1;
-			$data['myPrice'] = $price ;
+			$data['price'] = $price ;
 
 			$title = $data['title'];
 			if(preg_match("/(\s[^\s]*?女.*)₩/",$title,$m))
@@ -65,6 +73,8 @@ class PostList extends control{
 
 			$data['img'] = $this->getImg($data);
 		}
+
+		$datas['finder'] = $postModel->getFinder();
 
 		$this->format($datas);
 

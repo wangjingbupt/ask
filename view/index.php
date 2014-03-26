@@ -11,7 +11,9 @@ class ViewIndex {
 		include(VIEW.'/banner.php');
 
 
-		$html = '<div class="container"><div class="row-fluid"><div class="span12"><div class = "span12">';
+		$html = '<div class="container"><div class="row-fluid"><div class="span10"><div class = "span12">';
+		if($this->finder != '')
+			$html .='<div class="well" style="margin:20px 0;"><h3><a style="color:#2980b9;" href="/">查看全部</a> '.$this->finder.'</h3></div>';
 		$html .="<form class='form-search' action='/' method='GET'><input type='text' name = 'skey' class='input-medium search-query' value='{$this->skey}'><input type='hidden' name = 'cat' value = '{$this->cat}'> <button type='submit' class='btn'>Search</button></form>";
 		$html .='<div><ul class="pager">';
 		if(isset($datas['hasPrev']))
@@ -59,10 +61,10 @@ class ViewIndex {
 					<div class="well">
 					<table class="table table-bordered">
 					<tr style='$bg'>
-					<td style='width:10%;'>$id </br> $status</td>
+					<td style='width:10%;'>$id </br> $status</br>零售价:$myPrice</td>
 					<td style='width:15%;'>$title</td>
 					<td style='width:20%;'><img src="$img"></td>
-					<td style='width:5%;'>$myPrice</td>
+					<td style='width:5%;'>$price</td>
 					<td style='width:6%;'>$pubtime</td>
 					</table>
 					</div><!--/.well -->
@@ -85,6 +87,20 @@ HTML;
 		$html .='</ul></div>';
 
 		$html .='</div></div>';
+
+		$html .='<div class="span2">'; 
+
+		if(is_array($datas['finder']) && !empty($datas['finder']))
+		{
+			$html .= '<div class="well"><ul class="nav nav-tabs nav-stacked"><li><h5>归档</h5></li>';	
+			foreach($datas['finder'] as $line)
+			{
+				$name = $line['date'];
+				$url ='/?finder='.$line['date'];
+				$html .='<li><a href="'.$url.'">'.$name.' ('.$line['num'].')</a></li>';
+			}
+			$html .= '</ul></div>';
+		}
 
 
 		$html .='</div></div></div>';
