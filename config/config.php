@@ -16,7 +16,7 @@ define('CONTROLLER_POST', CONTROLLER."/post");
 define('CONTROLLER_LOGIN', CONTROLLER."/login");
 
 define('REDIRECT_URL', "http://ask.sleepwalker.pro/");
-define('POST_PAGE_NUM', 10);
+define('POST_PAGE_NUM', 30);
 
 define('IMG_PATH',ROOT.'/../images/myblog/');
 define('IMG_URL','http://img.sleepwalker.pro/');
