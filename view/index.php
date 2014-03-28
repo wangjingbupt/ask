@@ -175,8 +175,8 @@ HTML;
 					<table class="table table-bordered">
 					<tr style='$bg'>
 					<td style='width:60%;'><img src="$img"></td>
-					<td style='width:25%;'>$id</td>
-					<td style='width:15%;'>$myPrice</td>
+					<td style='width:25%;'>$id<br/>零售价:$myPrice</td>
+					<td style='width:15%;'>$price</td>
 					</tr>
 					</table>
 					</div><!--/.well -->
